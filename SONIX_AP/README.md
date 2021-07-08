@@ -2,7 +2,7 @@
 
 
 ```
-cd C1_SONIX_Test_AP
+cd SONIX_AP
 cp Makefile.x86 Makefile
 make
 ```
@@ -14,14 +14,14 @@ make
 ./SONiX_UVC_TestAP -h
 ```
 
-## Save MJPG frames (/dev/video0 is MJPG interface)
+## Save MJPG frames (if /dev/video0 is MJPG interface)
 ```
 ./SONiX_UVC_TestAP /dev/video0 -c -f mjpg -S
 ```
 
-## Save H.264 video data (/dev/video1 is H.264 interface)
+## Save H.264 video data (if /dev/video2 is H.264 interface)
 ```
-./SONiX_UVC_TestAP /dev/video1 -c -f H264 -r
+./SONiX_UVC_TestAP /dev/video2 -c -f H264 -r
 ```
 
 ## Extension Unit (XU) controls
@@ -31,23 +31,12 @@ make
 ./SONiX_UVC_TestAP /dev/video1 -a
 ```
 
-### Get & Set H.264 resolutions & framerates (1280x720, 24fps), Insure getting format before setting format !
-```
-./SONiX_UVC_TestAP /dev/video1 --xuget-fmt --xuset-fmt 1-1
-```
-
-### Get & Set H.264 QP/Bitrates(Kbps)
-```
-./SONiX_UVC_TestAP /dev/video1 --xuget-qp --xuset-qp 31 --xuget-br --xuset-br 6882
-
-```
 ### Get and set bitrate
 ```
 ./SONiX_UVC_TestAP --xuget-br /dev/video1
 ./SONiX_UVC_TestAP --xuset-br 1000 /dev/video1
 ./SONiX_UVC_TestAP --xuset-br 1000000 /dev/video1
 ./SONiX_UVC_TestAP --xuset-br 10000000 /dev/video1
-./SONiX_UVC_TestAP --xuset-gop 100 /dev/video1
 ```
 
 ### Set framerate
