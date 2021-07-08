@@ -7,19 +7,21 @@ cp Makefile.x86 Makefile
 make
 ```
 
-# Using TestAP
+# Using the executable
 
-## Print help
+## Printing help
 ```
 ./SONiX_UVC_TestAP -h
 ```
 
-## Save MJPG frames (if /dev/video0 is MJPG interface)
+## Save MJPG frames 
+*Note: in this case /dev/video0 is the video capture device that supports MJPG*</br>
 ```
 ./SONiX_UVC_TestAP /dev/video0 -c -f mjpg -S
 ```
 
-## Save H.264 video data (if /dev/video2 is H.264 interface)
+## Record h264 video
+*Note: in this case /dev/video2 is the video capture device that supports H264*</br>
 ```
 ./SONiX_UVC_TestAP /dev/video2 -c -f H264 -r
 ```
@@ -28,7 +30,7 @@ make
 
 ### Add XU ctrls to uvc driver (if uvc driver doesn't support)
 ```
-./SONiX_UVC_TestAP /dev/video1 -a
+./SONiX_UVC_TestAP /dev/video2 -a
 ```
 
 ### Get and set bitrate
