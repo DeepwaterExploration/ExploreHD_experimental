@@ -21,10 +21,13 @@ make
 ```
 ./SONiX_UVC_TestAP /dev/video0 -c -f mjpg -S
 ```
+### Get Bitrate
+```
+./SONiX_UVC_TestAP --xuget-mjb /dev/video0
+```
 ### Set Bitrate (bits/second)
 ```
-./SONiX_UVC_TestAP --xuget-mjb /dev/video1
-./SONiX_UVC_TestAP --xuset-mjb 1000 /dev/video1
+./SONiX_UVC_TestAP --xuset-mjb 30000000 /dev/video0
 ```
 
 ## H264
@@ -33,9 +36,12 @@ make
 ```
 ./SONiX_UVC_TestAP /dev/video2 -c -f H264 -r
 ```
-### Set Bitrate (bits/second)
+### Get Bitrate 
 ```
 ./SONiX_UVC_TestAP --xuget-br /dev/video2
-./SONiX_UVC_TestAP --xuset-br 1000 /dev/video2
+```
+### Set Bitrate (bits/second)
+```
+./SONiX_UVC_TestAP --xuset-br 30000000 /dev/video2
 ```
 
