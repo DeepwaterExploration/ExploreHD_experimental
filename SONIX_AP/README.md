@@ -11,16 +11,31 @@ make
 ```
 
 ## Finding Your Video Devices
-### List Your Video Devices
+List your video devices with the following command:
 ```
-
 v4l2-ctl --list-devices
 ```
-After finding the video devices for your exploreHB USB camera.Run this command: 
+The output should be similar to this: 
+```
+exploreHD USB Camera: exploreHD (usb-0000:00:14.0-2):
+        /dev/video0
+        /dev/video1
+        /dev/video2
+        /dev/video3
+```
+After finding the video devices for your exploreHB USB camera.</br>
+Run this command with your respective /dev/video devices and determine which video devices support MJPG and H264: 
 ```
 v4l2-ctl -d /dev/video0 --list-formats
 ```
-Determine which video devices are 
+Output: 
+```
+ioctl: VIDIOC_ENUM_FMT
+        Type: Video Capture
+
+        [0]: 'MJPG' (Motion-JPEG, compressed)
+        [1]: 'YUYV' (YUYV 4:2:2)
+```
 
 ## Setting Up XU ctrls
 ```
