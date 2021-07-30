@@ -33,5 +33,6 @@ gst-launch-1.0 -v udpsrc port=5000 ! application/x-rtp, media=video, clock-rate=
 ```
 
 ## Recording MJPG Stream with NVENC GStreamer Plugin
-```gst-launch-1.0 -v udpsrc port=5000 ! application/x-rtp,media=video,clock-rate=90000,encoding-name=JPEG,payload=26 ! rtpjpegdepay ! jpegdec ! queue ! nvh264enc ! h264parse ! mp4mux ! filesink location=video.mp4
+```
+gst-launch-1.0 -v udpsrc port=5000 ! application/x-rtp,media=video,clock-rate=90000,encoding-name=JPEG,payload=26 ! rtpjpegdepay ! jpegdec ! queue ! nvh264enc ! h264parse ! mp4mux ! filesink location=video.mp4
 ```
