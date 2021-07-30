@@ -5,6 +5,7 @@
 gst-launch-1.0 -v v4l2src device=/dev/video2 ! video/x-h264, width=640,height=480! h264parse ! queue ! rtph264pay config-interval=10 pt=96 ! udpsink host=127.0.0.1 port=5000 sync=false
 ```
 ### Rceiving Stream
+*Two commands you can use*
 ```
 gst-launch-1.0 -v udpsrc port=5000 ! application/x-rtp, encoding-name=H264,payload=96! rtpjitterbuffer ! rtph264depay ! avdec_h264 ! autovideosink
 ```
