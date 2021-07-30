@@ -1,6 +1,6 @@
 # Compile
 ```
-cd SONIX_AP
+cd Camera_Controls
 cp Makefile.x86 Makefile
 make
 ```
