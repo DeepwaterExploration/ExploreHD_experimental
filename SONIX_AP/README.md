@@ -12,10 +12,14 @@ make
 
 ## Finding Your Video Devices
 ### List Your Video Devices
-```v4l2-ctl --list-devices```
+```
 
+v4l2-ctl --list-devices
+```
 After finding the video devices for your exploreHB USB camera.Run this command: 
-```v4l2-ctl -d /dev/video0 --list-formats```
+```
+v4l2-ctl -d /dev/video0 --list-formats
+```
 Determine which video devices are 
 
 ## Setting Up XU ctrls
