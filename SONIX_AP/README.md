@@ -36,7 +36,18 @@ ioctl: VIDIOC_ENUM_FMT
         [0]: 'MJPG' (Motion-JPEG, compressed)
         [1]: 'YUYV' (YUYV 4:2:2)
 ```
+Command run: 
+```
+v4l2-ctl -d /dev/video2 --list-formats
+```
+Output:
+```
+ioctl: VIDIOC_ENUM_FMT
+        Type: Video Capture
 
+        [0]: 'H264' (H.264, compressed)
+
+```
 ## Setting Up XU ctrls
 ```
 ./SONiX_UVC_TestAP /dev/video2 -a
