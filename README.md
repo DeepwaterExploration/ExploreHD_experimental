@@ -1,4 +1,4 @@
-# ExploreHD_experimental
+# exploreHD Controls
 ## H264
 ### Sending Streaming 
 ```
