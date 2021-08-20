@@ -1,11 +1,12 @@
 #!/bin/bash
 export LD_LIBRARY_PATH=/usr/local/lib/
-for DEVICE in $(ls /dev/video*); 
-do
-    .$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-br 1500000 $DEVICE
-    .$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-gop 0 $DEVICE
-    .$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-cvm 2 $DEVICE
+# set bitrate and H.264 recording settings for all connected cameras that support exploreHD
+for DEVICE in $(ls /dev/video*); do
+	.$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-br 1500000 $DEVICE
+	.$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-gop 0 $DEVICE
+	.$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-cvm 2 $DEVICE
 done
+
 if [ -z "$1" ]; then
     WIDTH=$(cat ~/vidformat.param | xargs | cut -f1 -d" ")
     HEIGHT=$(cat ~/vidformat.param | xargs | cut -f2 -d" ")
