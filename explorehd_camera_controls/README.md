@@ -78,8 +78,13 @@ ioctl: VIDIOC_ENUM_FMT
 ```
 ./explorehd_UVC_TestAP --xuget-br /dev/video2
 ```
-### Set Bitrate (bits/second)
+### Set Bitrate (bits/second) and Reduce Video Lag
 ```
-./explorehd_UVC_TestAP --xuset-br 30000000 /dev/video2
+./explorehd_UVC_TestAP --xuset-br 1500000 /dev/video2
 ```
-
+```
+./explorehd_UVC_TestAP --xuset-gop 0 /dev/video2
+```
+```
+./explorehd_UVC_TestAP --xuset-cvm 2 1500000 /dev/video2
+```
