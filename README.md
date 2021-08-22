@@ -22,7 +22,7 @@ gst-launch-1.0 -v v4l2src  device=/dev/video0 ! video/x-raw,framerate=30/1 ! vid
 ```
 
 ## DeepStream 
-DeepStream must be installed on you machine: https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html </br>
+DeepStream must be installed on your machine: https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html </br>
 For more info: https://developer.nvidia.com/deepstream-sdk </br>
 ### Displaying Video from Camera
 ```
