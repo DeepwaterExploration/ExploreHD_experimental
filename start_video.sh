@@ -2,9 +2,7 @@
 export LD_LIBRARY_PATH=/usr/local/lib/
 # set bitrate and H.264 recording settings for all connected cameras that support exploreHD
 for DEVICE in $(ls /dev/video*); do
-	.$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-br 1500000 $DEVICE
-	.$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-gop 0 $DEVICE
-	.$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-cvm 2 $DEVICE
+	.$HOME/companion/scripts/explorehd_camera_controls/explorehd_UVC_TestAP --xuset-br 1500000 --xuset-gop 0 --xuset-cvm 2 $DEVICE
 done
 
 if [ -z "$1" ]; then
@@ -29,10 +27,8 @@ fi
 
 # check if this device is H264 capable before streaming
 # It would be better not to specify framerate, but there is an issue with RPi camera v4l2 driver, it will cause kernel error to use default framerate (90 fps)
+
 gst-launch-1.0 -v v4l2src device=$DEVICE do-timestamp=true num-buffers=1 ! video/x-h264 ! h264parse ! queue ! rtph264pay config-interval=10 pt=96 ! fakesink
-
-# set bitrate and H.264 recording settings for all connected cameras that support exploreHD
-
 
 # if it is not, check all available devices, and use the first h264 capable one instead
 if [ $? != 0 ]; then
