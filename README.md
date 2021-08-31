@@ -1,4 +1,26 @@
 # exploreHD Controls
+## Setup with Ardusub Companion
+### Setup WinSCP and PuTTy. Open WinSCP and start a new session.
+*File Protocol*
+```
+SFTP
+```
+*Host name*
+```
+192.168.2.2
+```
+*Port number*
+```
+22
+```
+*User name*
+```
+pi
+```
+*Password*
+```
+companion
+```
 ## H264
 ### Sending Stream
 ```
