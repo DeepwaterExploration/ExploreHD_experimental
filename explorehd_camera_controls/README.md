@@ -1,6 +1,6 @@
 # Compile
 ```
-cd Camera_Controls
+cd explorehd_camera_controls
 cp Makefile.x86 Makefile
 make
 ```
