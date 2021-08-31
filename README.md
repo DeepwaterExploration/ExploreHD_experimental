@@ -1,5 +1,5 @@
 # exploreHD Controls
-## Setup with Ardusub Companion
+## Setup with ArduSub Companion
 ### Setup WinSCP and PuTTy. Open WinSCP and start a new session.
 *File Protocol*
 ```
@@ -21,6 +21,18 @@ pi
 ```
 companion
 ```
+*Navigate to*
+```
+/home/pi/companion/scripts/
+```
+*Replace start_video.sh with current start_video.sh in this folder. Copy explorehd_camera_controls folder and put it in the scripts folder as well*
+*Open a new PuTTy session and login with companion as passowrd. Then compile.*
+```
+cd companion/scripts/explorehd_camera_controls
+cp Makefile.x86 Makefile
+make
+```
+*Restart the pi to recieve the new stream.*
 ## H264
 ### Sending Stream
 ```
