@@ -1,6 +1,6 @@
 # exploreHD Controls
 ## H264
-### Sending Streaming 
+### Sending Stream
 ```
 gst-launch-1.0 -v v4l2src device=/dev/video1 ! video/x-h264, width=1920,height=1080! h264parse ! queue ! rtph264pay config-interval=10 pt=96 ! udpsink host=192.168.2.1 port=5600 sync=false
 ```
