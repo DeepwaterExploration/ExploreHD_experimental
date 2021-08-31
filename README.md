@@ -7,10 +7,10 @@ gst-launch-1.0 -v v4l2src device=/dev/video1 ! video/x-h264, width=1920,height=1
 ### Rceiving Stream
 *Two commands you can use*
 ```
-gst-launch-1.0 -v udpsrc port=5000 ! application/x-rtp, encoding-name=H264,payload=96! rtpjitterbuffer ! rtph264depay ! avdec_h264 ! autovideosink
+gst-launch-1.0 -v udpsrc port=5600 ! application/x-rtp, encoding-name=H264,payload=96! rtpjitterbuffer ! rtph264depay ! avdec_h264 ! autovideosink
 ```
 ```
-gst-launch-1.0 -v udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! autovideosink
+gst-launch-1.0 -v udpsrc port=5600 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! autovideosink
 ```
 ## Streaming YUYV encoded as MJPEG
 ```
