@@ -25,8 +25,8 @@ companion
 ```
 /home/pi/companion/scripts/
 ```
-*Replace start_video.sh with current start_video.sh in this folder. Copy explorehd_camera_controls folder and put it in the scripts folder as well*
-*Open a new PuTTy session and login with companion as passowrd. Then compile.*
+*Replace start_video.sh with current start_video.sh in this folder. Copy explorehd_camera_controls folder and put it in the scripts folder.*
+*Open a new PuTTy session and login with companion as passowrd. Type the following to terminal.*
 ```
 cd companion/scripts/explorehd_camera_controls
 cp Makefile.x86 Makefile
