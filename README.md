@@ -46,6 +46,11 @@ gst-launch-1.0 -v udpsrc port=5600 ! application/x-rtp, encoding-name=H264,paylo
 ```
 gst-launch-1.0 -v udpsrc port=5600 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! autovideosink
 ```
+*OBS Pipeline*
+```
+udpsrc port=5600 ! application/x-rtp,media=(string)video,clock-rate=(int)90000,encoding-name=(string)H264 ! rtph264depay ! avdec_h264 output-corrupt=false ! videoconvert ! video. 
+```
+
 ## Streaming YUYV encoded as MJPEG
 ```
 gst-launch-1.0 -v v4l2src device=/dev/video0 ! video/x-raw,format=YUY2,width=640,height=480 ! jpegenc ! rtpjpegpay ! udpsink host=127.0.0.1 port=5000
