@@ -183,7 +183,5 @@ explorehd XU supported options:
 
 ### Recommended H.264 Settings
 ```
-./explorehd_UVC_TestAP --xuset-br 1500000 /dev/video2
-./explorehd_UVC_TestAP --xuset-gop 0 /dev/video2
-./explorehd_UVC_TestAP --xuset-cvm 2 1500000 /dev/video2
+./explorehd_UVC_TestAP --xuset-br 1500000 --xuset-gop 0 --xuset-cvm 2 1500000 /dev/video2
 ```
