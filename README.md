@@ -1,5 +1,5 @@
 # exploreHD Controls
-## Setup with ArduSub Companion
+## Setup with ArduSub Companion (No longer neccesary with the latest exploreHD firmware update. Only needed if you want more custom controls with the exploreHD)
 ### Setup WinSCP and PuTTy. Open WinSCP and start a new session.
 *File Protocol*
 ```
