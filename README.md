@@ -1,4 +1,49 @@
 # exploreHD Controls
+
+## UVC Driver Settings
+
+**NOTE: You must be running the Lower Bandwidth firmware on the camera to edit these settings** - <https://docs.exploredeepwater.com/software/firmware.html>
+
+With the exploreHD, it is possible to decrease the bandwidth to get multicam support.
+
+To setup the driver controls, run:
+```
+cd explorehd_camera_controls
+cp Makefile.x86 Makefile
+make
+```
+This will compile the exploreHD controls application. (NOTE: this will be replaced by user interface and custom driver system).
+
+**NOTE: These settings must be adjusting each time. You can setup a startup script in Linux.**
+
+You can find the device by listing with `v4l2-ctl --list-devices`
+
+For each device, there will typically be 4 `/dev/video*` entries. The third entry will be the H.264 compatible device for the exploreHD. For this example, we will be using `/dev/video0`
+
+### Maximum Quality (same as higher bandwidth firmware)
+
+Disable H.264 compression:
+
+`./explorehd_UVC_TestAP --xuset-gop 0 /dev/video0`
+
+Enable variable bitrate:
+
+`./explorehd_UVC_TestAP --xuset-cvm 2 /dev/video0`
+
+### Lower Bandwidth
+
+Enable H.264 compression:
+
+`./explorehd_UVC_TestAP --xuset-gop 28 /dev/video0`
+
+Disable variable bitrate:
+
+`./explorehd_UVC_TestAP --xuset-cvm 1 /dev/video0`
+
+Set the bitrate:
+
+`./explorehd_UVC_TestAP --xuset-br 10000 /dev/video0`
+
 ## Setup with ArduSub Companion (No longer neccesary with the latest exploreHD firmware update. Only needed if you want more custom controls with the exploreHD)
 ### Setup WinSCP and PuTTy. Open WinSCP and start a new session.
 *File Protocol*
