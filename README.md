@@ -9,7 +9,6 @@ With the exploreHD, it is possible to decrease the bandwidth to get multicam sup
 To setup the driver controls, run:
 ```
 cd explorehd_camera_controls
-cp Makefile.x86 Makefile
 make
 ```
 This will compile the exploreHD controls application. (NOTE: this will be replaced by user interface and custom driver system).
