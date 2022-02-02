@@ -1,12 +1,51 @@
-# Compile
-```
-cd explorehd_camera_controls
-cp Makefile.x86 Makefile
-make
-```
 # Using exploreHD Controls
 
-## Print help
+## UVC Driver Settings
+
+**NOTE: You must be running the Lower Bandwidth firmware on the camera to edit these settings** - <https://docs.exploredeepwater.com/software/firmware.html>
+
+With the exploreHD, it is possible to decrease the bandwidth to get multicam support.
+
+To setup the driver controls, run:
+```
+cd camera_controls
+make
+```
+This will compile the exploreHD controls application. (NOTE: this is being replaced by a user interface and custom driver system).
+
+**These settings must be adjusting each time. You can setup a startup script in Linux.**
+
+You can find the device by listing with `v4l2-ctl --list-devices`
+
+For each device, there will typically be 4 `/dev/video*` entries. The third entry will be the H.264 compatible device for the exploreHD. For this example, we will be using `/dev/video0`
+
+### Maximum Quality (same as higher bandwidth firmware)
+
+Disable H.264 compression:
+
+`./explorehd_UVC_TestAP --xuset-gop 0 /dev/video0`
+
+Enable variable bitrate:
+
+`./explorehd_UVC_TestAP --xuset-cvm 2 /dev/video0`
+
+### Lower Bandwidth
+
+Enable H.264 compression:
+
+`./explorehd_UVC_TestAP --xuset-gop 28 /dev/video0`
+
+Disable variable bitrate:
+
+`./explorehd_UVC_TestAP --xuset-cvm 1 /dev/video0`
+
+Set the bitrate:
+
+`./explorehd_UVC_TestAP --xuset-br 10000 /dev/video0`
+
+## Full Documentation
+
+### Print help
 ```
 ./explorehd_UVC_TestAP -h
 ```
@@ -119,34 +158,34 @@ explorehd XU supported options:
 ```
 
 
-## Save MJPG frames (/dev/video0 is MJPG interface)
+### Save MJPG frames (/dev/video0 is MJPG interface)
 ```
 ./explorehd_UVC_TestAP /dev/video0 -c -f mjpg -S
 ```
 
-## Save H.264 video data (/dev/video1 is H.264 interface, need explorehd UVC Like Driver support)
+### Save H.264 video data (/dev/video1 is H.264 interface, need explorehd UVC Like Driver support)
 ```
 ./explorehd_UVC_TestAP /dev/video1 -c -f H264 -r
 ```
 
-## Extension Unit (XU) controls
+### Extension Unit (XU) controls
 
-### Add XU ctrls to uvc driver (if uvc driver doesn't support)
+#### Add XU ctrls to uvc driver (if uvc driver doesn't support)
 ```
 ./explorehd_UVC_TestAP /dev/video1 -a
 ```
 
-### Get & Set H.264 resolutions & framerates (1280x720, 24fps), Insure getting format before setting format !
+#### Get & Set H.264 resolutions & framerates (1280x720, 24fps), Insure getting format before setting format !
 ```
 ./explorehd_UVC_TestAP /dev/video1 --xuget-fmt --xuset-fmt 1-1
 ```
 
-### Get & Set H.264 QP/Bitrates(Kbps)
+#### Get & Set H.264 QP/Bitrates(Kbps)
 ```
 ./explorehd_UVC_TestAP /dev/video1 --xuget-qp --xuset-qp 31 --xuget-br --xuset-br 6882
 
 ```
-### Get and set bitrate
+#### Get and set bitrate
 ```
 ./explorehd_UVC_TestAP --xuget-br /dev/video1
 ./explorehd_UVC_TestAP --xuset-br 1000 /dev/video1
@@ -155,13 +194,13 @@ explorehd XU supported options:
 ./explorehd_UVC_TestAP --xuset-gop 100 /dev/video1
 ```
 
-### Set framerate
+#### Set framerate
 ```
 ./explorehd_UVC_TestAP --fr 30 /dev/video1
 ./explorehd_UVC_TestAP --msfr 30 /dev/video1
 ```
 
-### Other settings
+#### Other settings
 ```
 ./explorehd_UVC_TestAP --xuset-gop 5 /dev/video1
 ./explorehd_UVC_TestAP --xuset-cvm 1 /dev/video1
@@ -181,7 +220,7 @@ explorehd XU supported options:
 ./explorehd_UVC_TestAP --xuget-gop /dev/video1
 ```
 
-### Recommended H.264 Settings
+#### Recommended H.264 Settings
 ```
 ./explorehd_UVC_TestAP --xuset-br 1500000 --xuset-gop 0 --xuset-cvm 2 1500000 /dev/video2
 ```
